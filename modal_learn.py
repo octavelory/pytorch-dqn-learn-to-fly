@@ -1,5 +1,5 @@
 import modal
-from learn import train_dqn
+from learn import train_dqn, PlaneEnv
 
 app = modal.App()
 ai_storage = modal.Volume.from_name("ai_storage", create_if_missing=True)
@@ -16,7 +16,8 @@ image = (
 
 @app.function(gpu="T4", image=image, volumes={"/data": ai_storage})
 def run():
-    train_dqn()
+    env = PlaneEnv(gui=False)
+    train_dqn(env, 
 
 @app.local_entrypoint()
 def main():
