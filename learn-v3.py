@@ -384,6 +384,5 @@ def main():
         env = PlaneEnv(gui=True)
         demo(env, args.load_path)
 
-
 if __name__ == "__main__":
     main()

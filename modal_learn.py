@@ -17,7 +17,7 @@ image = (
 @app.function(gpu="T4", image=image, volumes={"/data": ai_storage})
 def run():
     env = PlaneEnv(gui=False)
-    train_dqn(env, 
+    train_dqn(env, episodes=1000)
 
 @app.local_entrypoint()
 def main():
